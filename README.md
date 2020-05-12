@@ -4,6 +4,6 @@
 
 所以博客里面没有自己的内容，正在开始修改
 
-博客的搭建教程来自github.com/qiubaiying/qiubaiying.github.io
+博客的搭建教程来自(github.com/qiubaiying/qiubaiying.github.io)
  
 
