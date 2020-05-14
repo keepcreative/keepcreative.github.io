@@ -1,0 +1,79 @@
+# 树莓派Rasbian工作环境搭建
+
+[toc]
+
+
+
+## 零、初始环境
+
+### 硬件
+
+* Raspberry Pi 4B+ 及树莓派专用 Type-C 电源（可用10W手机充电器代替）、网线
+
+* 联网Windows 10系统电脑
+
+* 8Gb及以上Micro SD闪存卡
+
+  > 由于我没有树莓派能用的HDMI线，而且不便外接键盘鼠标，所以这里使用SSH和VNC对树莓派进行操作
+
+## 一、准备工作
+
+### 烧写固件
+
+首先选择一个树莓派官方的[Raspbian镜像](https://www.raspberrypi.org/downloads/raspbian/ "下载链接")下载
+
+然后使用[image writer](https://sourceforge.net/projects/win32diskimager/  '下载链接' )选择下载好的镜像写入空白SD卡
+
+### 开启SSH
+在boot分区新建ssh空文件，可以随便新建一个文本文档，连后缀一起修改文件名为ssh
+
+### SSH连接
+插入烧写好的SD卡，连接电源线上电，网线连接路由器，确保电脑与树莓派同处一个局域网，登陆路由器网关获取树莓派内网IP地址
+
+下载[Putty](https://www.putty.org/)输入树莓派IP并登陆
+>默认用户名：pi
+>默认密码：rapberry
+
+
+
+### 初始设定
+进入系统后首先运行下面代码
+```
+raspi-config
+```
+找到以下条目，根据需求自行选择开启
+> #先联网后启动
+> wait for network at boot --yes
+
+> #扩展系统空间
+> expand filesystem	
+
+> #开启vncserver
+> vnc  --on	 
+
+> #开启ssh
+> ssh --on	 
+
+## 二、换源更新
+
+### 修改源
+
+	sudo nano  /etc/apt/sources.list
+
+
+?	复制粘贴一下内容
+	deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib
+	
+	deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib
+	
+	sudo nano /etc/apt/sources.list.d/raspi.list
+	
+	deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+
+按下`Ctrl + C` 再按 `Y`回车保存
+
+### 应用更新
+
+	sudo apt-get update
+	sudo apt-get upgrade
+
