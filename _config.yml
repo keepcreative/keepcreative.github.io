@@ -74,8 +74,7 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 34eced09afea11d9133e10e52fe03400
-
+ba_track_id: 911e9d7de628fd0c7d0bdd88424f8a87
 # Google Analytics
 #ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
 #ga_domain: keepcreative.top               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
